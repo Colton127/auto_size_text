@@ -24,8 +24,9 @@ class AutoSizeGroup {
     } else {
       _listeners[text] = maxFontSize;
     }
-
-    if (oldFontSize != _fontSize) {
+    if (_fontSize >= oldFontSize) {
+      _fontSize = oldFontSize;
+    } else {
       _widgetsNotified = false;
       scheduleMicrotask(_notifyListeners);
     }
